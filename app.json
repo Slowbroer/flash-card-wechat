@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/flash_card/flash_card",
     "pages/book/book",
-    "pages/flash_card/card_test"
+    "pages/flash_card/card_test",
+    "pages/book/info",
+    "pages/flash_card/list"
   ],
   "entryPagePath": "pages/book/book",
   "window": {
