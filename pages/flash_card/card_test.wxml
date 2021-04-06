@@ -1,8 +1,0 @@
-<!--pages/flash_card/card_test.wxml-->
-<text>pages/flash_card/card_test.wxml</text>
-
-<view style="text-align:center">
-  <button class="mini-btn" type="primary" size="mini">按钮</button>
-  <button class="mini-btn" type="default" size="mini">按钮</button>
-  <button class="mini-btn" type="warn" size="mini">按钮</button>
-</view>

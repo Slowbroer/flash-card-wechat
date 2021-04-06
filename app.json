@@ -2,12 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/flash_card/flash_card",
-    "pages/book/book",
-    "pages/flash_card/card_test",
-    "pages/book/info",
+
     "pages/flash_card/list",
-    "pages/flash_card/info"
+    "pages/flash_card/info",
+
+    "pages/book/list",
+    "pages/book/info",
+
+    "pages/check/check",
   ],
   "entryPagePath": "pages/book/book",
   "window": {

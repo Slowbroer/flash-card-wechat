@@ -1,4 +1,4 @@
-// pages/flash_card/card_test.js
+// pages/check/check.js
 Page({
 
   /**
