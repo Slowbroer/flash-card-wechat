@@ -6,7 +6,8 @@
     "pages/book/book",
     "pages/flash_card/card_test",
     "pages/book/info",
-    "pages/flash_card/list"
+    "pages/flash_card/list",
+    "pages/flash_card/info"
   ],
   "entryPagePath": "pages/book/book",
   "window": {

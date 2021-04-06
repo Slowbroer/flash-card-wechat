@@ -1,4 +1,4 @@
-// pages/flash_card/flash_card.js
+// pages/flash_card/info.js
 Page({
 
   /**
