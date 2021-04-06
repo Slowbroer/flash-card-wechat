@@ -1,0 +1,4 @@
+/* pages/flash_card/card_test.wxss */
+.mini-btn{
+  margin-right: 10rpx;
+}
