@@ -9,7 +9,7 @@
     "pages/book/list",
     "pages/book/info",
 
-    "pages/check/check",
+    "pages/check/check"
   ],
   "entryPagePath": "pages/book/book",
   "window": {
