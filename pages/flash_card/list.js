@@ -1,31 +1,55 @@
 // pages/flash_card/list.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    book:{
-      id: 1,
-      name: "mysql"
-    },
+    book: null,
     cards: [
       {
         id: 1,
-        front:"主键" 
+        name:"主键" 
       },
       {
         id: 2,
-        front:"外键"
+        name:"外键"
       }
     ]
+  },
+
+  cardClick: function(event){
+    id = event.target.dataset.id
+    if (id) {
+      wx.navigateTo('../flash_card/info?id=' + id)
+    }
+    return false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.set
+    book_id = options.book_id
+    book_name = options.book_name
+    this.book = {
+      id: book_id,
+      name: book_name
+    }
+    if (! book_id) {
+      console.log("can not get the book id")
+    }
+    app.wxRequest("GET","card",{
+      "book_id": book_id
+    },function(res){
+      console.log('get cards success')
+      this.data.cards = res.data.data.items
+    },function(err){
+      console.log('get cards error')
+      return false
+    })
+
   },
 
   /**

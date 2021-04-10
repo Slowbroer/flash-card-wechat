@@ -3,5 +3,14 @@
   <view class="book-title">
     {{book.name}}
   </view>
+  <view class="card">
+    <view class="card-list" wx:for="{{cards}}">
+      <view class="card-item">
+        <view class="card-front" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="cardClick">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
  

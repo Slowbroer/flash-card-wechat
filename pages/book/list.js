@@ -15,8 +15,9 @@ Page({
 
   bookClick: function(event) {
     id = event.target.dataset.id
+    name = event.target.dataset.name
     if (id) {
-      wx.navigateTo('../flash_card/list?id=' + id)
+      wx.navigateTo('../flash_card/list?book_id=' + id + "&book_name=" + name)
     }
     return false
   },

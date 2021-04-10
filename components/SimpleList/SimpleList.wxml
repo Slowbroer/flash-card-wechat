@@ -1,0 +1,8 @@
+<!--components/SimpleList/SimpleList.wxml-->
+<view class="simple">
+  <view class="simple-list" wx:for="{{itemList}}">
+    <view class="simple-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="bookClick">
+      <view class="item-name">{{item.name}}</view>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,16 @@
 /* pages/flash_card/list.wxss */
+.book-title {
+  font-size: 60rpx;
+  font-weight: bolder;
+  text-align: center;
+  padding-bottom: 20rpx;
+}
+.card-item {
+  background: whitesmoke;
+  margin: 10rpx;
+  padding: 25rpx 20rpx;
+  font: xx-large;
+  font-weight: bold;
+  color: darkslategray;
+  /* font-size: 35rpx; */
+}

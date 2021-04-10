@@ -5,7 +5,6 @@
 </view>
 <view class="book">
   <view class="book-list" wx:for="{{books}}">
-    <!-- <mp-cell class="book-item" id="menuTipCell" value="{{item.name}}" footer="详情" bindtap="menuCellTap"></mp-cell> -->
     <view class="book-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="bookClick">
       <view class="book-name">{{item.name}}</view>
     </view>
