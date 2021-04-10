@@ -1,18 +1,40 @@
 // pages/book/list.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    books:[
+      {"id":1,"name":"mysql"},
+      {"id":2,"name":"kafka"}
+    ]
+  },
 
+  bookClick: function(event) {
+    id = event.target.dataset.id
+    if (id) {
+      wx.navigateTo('../flash_card/list?id=' + id)
+    }
+    return false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app.wxRequest(
+      "GET",
+      'book',
+      {},
+      function (res) {
+        // loading the book list
+        this.data.books = res.data.data.items
+      },
+      function (err) {}
+    )
   },
 
   /**

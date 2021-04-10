@@ -11,7 +11,7 @@
 
     "pages/check/check"
   ],
-  "entryPagePath": "pages/book/book",
+  "entryPagePath": "pages/flash_card/list",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -19,5 +19,8 @@
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

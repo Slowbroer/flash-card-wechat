@@ -5,14 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    book:{
+      id: 1,
+      name: "mysql"
+    },
+    cards: [
+      {
+        id: 1,
+        front:"主键" 
+      },
+      {
+        id: 2,
+        front:"外键"
+      }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.set
   },
 
   /**

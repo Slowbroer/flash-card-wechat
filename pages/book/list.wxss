@@ -1,1 +1,23 @@
 /* pages/book/list.wxss */
+.book-list-top {
+  margin-top: 40rpx;
+  
+}
+
+.book {
+  /* padding: 20rpx; */
+}
+
+.book-list{
+
+}
+
+.book-item {
+  background: whitesmoke;
+  margin: 10rpx;
+  padding: 25rpx 20rpx;
+  font: xx-large;
+  font-weight: bold;
+  color: darkslategray;
+  /* font-size: 35rpx; */
+}

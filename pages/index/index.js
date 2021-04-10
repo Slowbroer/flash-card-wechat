@@ -2,6 +2,26 @@
 // 获取应用实例
 const app = getApp()
 
+function login_success(res){
+  console.log(res)
+  if (res.data.status != 200){
+    console.log('login failed')
+    return false
+  } 
+  // jump to the book list 
+  wx.setStorage({
+    data: res.data.data.token,
+    key: 'auth_token',
+  })
+  wx.redirectTo({
+    url: "../book/list"
+  })
+}
+
+function login_fail(err){
+  console.log(err)
+}
+
 Page({
   data: {
     motto: 'Hello World',
@@ -24,30 +44,34 @@ Page({
       })
     }
 
-    if (token = wx.getStorage({
+    // 获取token，如果有token就跳转到book列表页面，如果没有token的话就执行登陆操作
+    token = wx.getStorage({
       key: 'auth_token',
-    })){
-
-    }
-    else {
-      wx.login({
-        success (res) {
-          if (res.code) {
-            console.log(res.code)
-            //发起网络请求
-            wx.request({
+      success(res) {
+        console.log(res.data) // token
+        // jump to book list page
+        wx.redirectTo({
+          url: "../book/list"
+        })
+      },
+      fail() {
+        wx.login({
+          success (res) {
+            if (res.code) {
+              // console.log(res.code)
+              var auth_data = {
+                code: res.code,
+                password: Date.parse(new Date())
+              }
               // 后端请求登陆
-              // url: 'https://test.com/onLogin',
-              // data: {
-              //   code: res.code
-              // }
-            })
-          } else {
-            console.log('登录失败！' + res.errMsg)
+              app.wxRequest("POST","auth",auth_data,login_success,login_fail)
+            } else {
+              console.log('登录失败！' + res.errMsg)
+            }
           }
-        }
-      })
-    }
+        })
+      }
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

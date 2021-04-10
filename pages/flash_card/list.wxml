@@ -1,2 +1,7 @@
 <!--pages/flash_card/list.wxml-->
-<text>pages/flash_card/list.wxml</text>
+<view>
+  <view class="book-title">
+    {{book.name}}
+  </view>
+</view>
+ 
