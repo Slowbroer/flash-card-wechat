@@ -13,13 +13,14 @@ function login_success(res){
     data: res.data.data.token,
     key: 'auth_token',
   })
+  console.log("redirect to book list")
   wx.redirectTo({
     url: "../book/list"
   })
 }
 
 function login_fail(err){
-  console.log(err)
+  console.log("login failed")
 }
 
 Page({
@@ -45,14 +46,17 @@ Page({
     }
 
     // 获取token，如果有token就跳转到book列表页面，如果没有token的话就执行登陆操作
-    token = wx.getStorage({
+    var token = wx.getStorage({
       key: 'auth_token',
       success(res) {
         console.log(res.data) // token
-        // jump to book list page
-        wx.redirectTo({
-          url: "../book/list"
-        })
+        if (res.data) {
+          // jump to book list
+          console.log('local token is :' + res.data)
+          wx.redirectTo({
+            url: "../book/list"
+          })
+        }
       },
       fail() {
         wx.login({
@@ -64,7 +68,7 @@ Page({
                 password: Date.parse(new Date())
               }
               // 后端请求登陆
-              app.wxRequest("POST","auth",auth_data,login_success,login_fail)
+              app.wxRequest("POST","flash_card/auth",auth_data,login_success,login_fail,false)
             } else {
               console.log('登录失败！' + res.errMsg)
             }

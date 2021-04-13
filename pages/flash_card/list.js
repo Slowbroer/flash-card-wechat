@@ -8,21 +8,24 @@ Page({
   data: {
     book: null,
     cards: [
-      {
-        id: 1,
-        name:"主键" 
-      },
-      {
-        id: 2,
-        name:"外键"
-      }
+      // {
+      //   id: 1,
+      //   name:"主键" 
+      // },
+      // {
+      //   id: 2,
+      //   name:"外键"
+      // }
     ]
   },
 
   cardClick: function(event){
-    id = event.target.dataset.id
+    var id = event.currentTarget.dataset.id
+    var book_id = event.currentTarget.dataset.book_id
     if (id) {
-      wx.navigateTo('../flash_card/info?id=' + id)
+      wx.navigateTo({
+        url:'../flash_card/info?card_id=' + id + '&book_id=' + book_id
+      })
     }
     return false
   },
@@ -31,25 +34,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    book_id = options.book_id
-    book_name = options.book_name
-    this.book = {
-      id: book_id,
-      name: book_name
-    }
+    var book_id = options.book_id
+    var book_name = options.book_name
+    this.setData({
+      book: {
+        id: book_id,
+        name: book_name
+      }
+    })
     if (! book_id) {
       console.log("can not get the book id")
     }
-    app.wxRequest("GET","card",{
-      "book_id": book_id
-    },function(res){
-      console.log('get cards success')
-      this.data.cards = res.data.data.items
-    },function(err){
-      console.log('get cards error')
-      return false
-    })
-
+    var that = this
+    
+    app.wxRequest(
+      "GET",
+      "flash_card/card",
+      {
+        "book_id": book_id
+      },
+      function(res){
+        console.log(that)
+        console.log('get cards success')
+        that.setData({
+          cards: res.data.data.items
+        })
+      },
+      function(err){
+        console.log('get cards error')
+        return false
+      })
   },
 
   /**

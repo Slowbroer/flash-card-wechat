@@ -6,7 +6,7 @@
   <view class="card">
     <view class="card-list" wx:for="{{cards}}">
       <view class="card-item">
-        <view class="card-front" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="cardClick">
+        <view class="card-front" data-id="{{item.id}}" data-name="{{item.name}}" data-book_id="{{book.id}}" bindtap="cardClick">
           {{item.name}}
         </view>
       </view>

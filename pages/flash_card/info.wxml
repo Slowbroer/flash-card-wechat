@@ -1,2 +1,24 @@
 <!--pages/flash_card/info.wxml-->
-<text>pages/flash_card/info.wxml</text>
+<!-- <text>pages/flash_card/info.wxml</text> -->
+<view class="card-top">
+
+</view>
+<view class="card">
+  <mp-form class="card-form">
+    <mp-cells>
+      <mp-cell>
+        <input name="front" bindinput="formInputChange" rules="required" data-field="front" class="weui-input" placeholder="请输入问题" value="{{front}}" />
+      </mp-cell>
+      <mp-cell>
+        <textarea name="back" class="weui-textarea" value="{{back}}" data-field="back" placeholder="请输入背面答案" style="height: 7em" />
+        <view class="weui-textarea-counter">0/200</view>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+
+  <view class="weui-btn-area">
+    <button class="weui-btn" rules="required" type="primary" bindtap="submitCardInfo">确定</button>
+    <button class="weui-btn" bindtap="submitForm">取消</button>
+  </view>
+</view>
+

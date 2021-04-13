@@ -8,16 +8,18 @@ Page({
    */
   data: {
     books:[
-      {"id":1,"name":"mysql"},
-      {"id":2,"name":"kafka"}
+      
     ]
   },
 
   bookClick: function(event) {
-    id = event.target.dataset.id
-    name = event.target.dataset.name
+    var id = event.currentTarget.dataset.id
+    var name = event.currentTarget.dataset.name
     if (id) {
-      wx.navigateTo('../flash_card/list?book_id=' + id + "&book_name=" + name)
+      console.log("jump to book " + id)
+      wx.navigateTo({
+        url: '../flash_card/list?book_id=' + id + "&book_name=" + name
+      })
     }
     return false
   },
@@ -26,13 +28,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     app.wxRequest(
       "GET",
-      'book',
+      'flash_card/book',
       {},
       function (res) {
         // loading the book list
-        this.data.books = res.data.data.items
+        that.setData({books:res.data.data.items})
       },
       function (err) {}
     )

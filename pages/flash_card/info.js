@@ -1,18 +1,139 @@
 // pages/flash_card/info.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    book_id : null,
+    id : null,
+    front : null,
+    back : null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var card_id = options.card_id
+    var book_id = options.book_id
+    if (! book_id) {
+      wx.showModal({
+        content: '必须先选择抽记本，如果没有请新建抽记本',
+        mask: true,
+        complete: function() {
+          wx.navigateTo({
+            url: '../book/list',
+          })
+        }
+      })
+    }
 
+    this.data.book_id = book_id 
+    if (card_id) {
+      this.getCardInfo(card_id)
+    }
+  },
+
+  getCardInfo: function (card_id) {
+    var that = this
+    app.wxRequest(
+      "GET",
+      "flash_card/card/" + card_id,
+      {},
+      function(res) {
+        var info = res.data.data
+        if (info) {
+          that.setData({
+            id: info.id,
+            front: info.front,
+            back: info.back
+          })
+        }
+        return false
+      },
+      function(err) {
+        console.log("get the card information error")
+      })
+  },
+
+  submitCardInfo: function(event) {
+    console.log("submit the form data:", event.detail)
+    let {front, back} = event.detail.value
+
+    console.log(front)
+    console.log(back)
+    if (front && back) {
+      var from_data = {
+        "front": front,
+        "back": back,
+        "book_id": this.data.book_id
+      }
+      if (this.data.id) {
+        this.updateFlashCard(this.data.id,from_data)
+      }
+      else {
+        this.addFlashCard(from_data)
+      }
+
+
+    }
+  },
+
+  addFlashCard: function(data) {
+    var that = this
+    app.wxRequest(
+      "POST",
+      "flash_card/card",
+      data,
+      function(res) {
+        wx.showToast({
+          title: '提交成功',
+          success: function(res) {
+            wx.redirectTo({
+              url: "../flash_card/list?book_id=" + that.book_id
+            })
+          }
+        })
+      },
+      function(err) {
+        wx.showToast({
+          title: '提交失败，请稍后再试',
+          success: function(res) {
+            wx.redirectTo({
+              url: "../flash_card/list?book_id=" + that.book_id
+            })
+          }
+        })
+      })
+  },
+  updateFlashCard: function(id,data) {
+    var that = this
+    app.wxRequest(
+      "POST",
+      "flash_card/card/" + id,
+      data,
+      function(res) {
+        wx.showToast({
+          title: '提交成功',
+          success: function(res) {
+            wx.redirectTo({
+              url: "../flash_card/list?book_id=" + that.book_id
+            })
+          }
+        })
+      },
+      function(err) {
+        wx.showToast({
+          title: '提交失败，请稍后再试',
+          success: function(res) {
+            wx.redirectTo({
+              url: "../flash_card/list?book_id=" + that.book_id
+            })
+          }
+        })
+      })
   },
 
   /**
