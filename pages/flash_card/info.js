@@ -7,6 +7,7 @@ Page({
    */
   data: {
     book_id : null,
+    book_name : null,
     id : null,
     front : null,
     back : null,
@@ -59,7 +60,8 @@ Page({
   },
 
   submitCardInfo: function(event) {
-    console.log("submit the form data:", event.detail)
+    console.log(event)
+    console.log("test")
     let {front, back} = event.detail.value
 
     console.log(front)
@@ -76,8 +78,6 @@ Page({
       else {
         this.addFlashCard(from_data)
       }
-
-
     }
   },
 
@@ -91,9 +91,12 @@ Page({
         wx.showToast({
           title: '提交成功',
           success: function(res) {
-            wx.redirectTo({
-              url: "../flash_card/list?book_id=" + that.book_id
+            wx.navigateBack({
+              delta: 1,
             })
+            // wx.redirectTo({
+            //   url: "../flash_card/list?book_id=" + that.data.book_id
+            // })
           }
         })
       },
@@ -101,9 +104,12 @@ Page({
         wx.showToast({
           title: '提交失败，请稍后再试',
           success: function(res) {
-            wx.redirectTo({
-              url: "../flash_card/list?book_id=" + that.book_id
+            wx.navigateBack({
+              delta: 1,
             })
+            // wx.redirectTo({
+            //   url: "../flash_card/list?book_id=" + that.data.book_id
+            // })
           }
         })
       })
@@ -118,9 +124,12 @@ Page({
         wx.showToast({
           title: '提交成功',
           success: function(res) {
-            wx.redirectTo({
-              url: "../flash_card/list?book_id=" + that.book_id
+            wx.navigateBack({
+              delta: 1,
             })
+            // wx.redirectTo({
+            //   url: "../flash_card/list?book_id=" + that.data.book_id
+            // })
           }
         })
       },
@@ -128,9 +137,12 @@ Page({
         wx.showToast({
           title: '提交失败，请稍后再试',
           success: function(res) {
-            wx.redirectTo({
-              url: "../flash_card/list?book_id=" + that.book_id
+            wx.navigateBack({
+              delta: 1,
             })
+            // wx.redirectTo({
+            //   url: "../flash_card/list?book_id=" + that.data.book_id
+            // })
           }
         })
       })

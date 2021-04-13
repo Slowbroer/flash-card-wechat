@@ -1,5 +1,8 @@
 <!--pages/flash_card/list.wxml-->
 <view>
+  <view class="add-btn">
+    新增
+  </view>
   <view class="book-title">
     {{book.name}}
   </view>

@@ -1,5 +1,7 @@
 <!--pages/book/list.wxml-->
-
+<view class="add-btn" bindtap="addBook">
+  新增
+</view>
 <view class="book-list-top">
 
 </view>

@@ -1,2 +1,15 @@
 <!--pages/book/info.wxml-->
-<text>pages/book/info.wxml</text>
+<view class="book-top">
+</view>
+<view class="book">
+  <form class="book-form" bindsubmit="submitBookInfo">
+    <mp-cells>
+      <mp-cell>
+        <input name="name" class="weui-input" placeholder="请输入名字" value="{{name}}" />
+      </mp-cell>
+    </mp-cells>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit" >确定</button>
+    </view>
+  </form>
+</view>

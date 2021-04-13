@@ -24,6 +24,12 @@ Page({
     return false
   },
 
+  addBook: function(event) {
+    wx.navigateTo({
+      url: "../bookf/info"
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
