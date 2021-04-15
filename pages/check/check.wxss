@@ -1,1 +1,69 @@
 /* pages/check/check.wxss */
+.card-container {
+  position: absolute;
+  /* top:0;
+  left:0;
+  right:0;
+  bottom: 0; */
+  width: 100%;
+  text-align: center;
+}
+
+
+.card {
+  position: relative;
+  height: 700rpx;
+  background-color: whitesmoke;
+  border: grey;
+  margin: 80rpx auto 20rpx auto;
+  width: 80%;
+  border: 1px solid grey;
+  border-radius: 15rpx;
+  /* line-height: 700rpx; */
+}
+
+.card-content {
+  position: absolute;
+  /* display: flex;
+  align-items: center; */
+  word-wrap:break-word;
+  width: 100%;
+  /* padding: 50rpx; */
+  /* font-size: xx-large; */
+  /* top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; */
+  overflow-x: scroll;
+  transition: all 1s;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: xx-large;
+}
+
+.card-back {
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  transform: rotateY(-180deg); 
+}
+.content-back {
+  padding: 20rpx;
+}
+
+
+.operation {
+  text-align: center;
+  margin: 40rpx 0;
+}
+
+.mini-btn {
+  margin: 10rpx;
+}

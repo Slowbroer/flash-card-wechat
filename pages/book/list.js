@@ -26,7 +26,7 @@ Page({
 
   addBook: function(event) {
     wx.navigateTo({
-      url: "../bookf/info"
+      url: "../book/info"
     })
   },
 

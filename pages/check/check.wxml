@@ -1,2 +1,28 @@
 <!--pages/check/check.wxml-->
-<text>pages/check/check.wxml</text>
+
+<view>
+  <view class="card-container">
+    <view class="card">
+      <view class="card-content card-front" data-id="1" bindtap="rotateFn" animation="{{animation1}}">
+        <view class="content-front">
+          {{front}}
+        </view>
+      </view>
+      <view class="card-content card-back" data-id="2" bindtap="rotateFn" animation="{{animation2}}">
+        <view class="content-back">
+          {{back}}
+        </view>
+      </view>
+    </view>
+    <!-- <view class="card-back card">
+      back
+    </view> -->
+    <view class="operation">
+      <button class="mini-btn" type="warn" size="mini" bindtap="rotateFn">翻转</button>
+      <button class="mini-btn" type="primary" size="mini" data-result="known" bindtap="sendCheckResult">我知道</button>
+      <button class="mini-btn" type="default" size="mini" data-book="{{book_id}}"  bindtap="nextCardInfo">下一个</button>
+    </view>
+  </view>
+
+
+</view>

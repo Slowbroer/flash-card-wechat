@@ -31,7 +31,11 @@ Page({
       })
     }
 
-    this.data.book_id = book_id 
+    console.log("this book is " + book_id)
+    this.setData({
+      'book_id': book_id
+    })
+
     if (card_id) {
       this.getCardInfo(card_id)
     }
@@ -66,6 +70,7 @@ Page({
 
     console.log(front)
     console.log(back)
+    console.log(this)
     if (front && back) {
       var from_data = {
         "front": front,

@@ -1,7 +1,10 @@
 <!--pages/flash_card/list.wxml-->
 <view>
-  <view class="add-btn">
+  <view class="add-btn" bindtap="addFlashCard">
     新增
+  </view>
+  <view class="check-btn" bindtap="checkBook">
+    测试
   </view>
   <view class="book-title">
     {{book.name}}

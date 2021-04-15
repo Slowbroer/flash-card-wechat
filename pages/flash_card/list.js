@@ -20,6 +20,18 @@ Page({
     ]
   },
 
+  addFlashCard: function(event) {
+    wx.navigateTo({
+      url: '../flash_card/info?book_id=' + this.data.book.id,
+    })
+  },
+
+  checkBook: function(event) {
+    wx.navigateTo({
+      url: '../check/check?book_id=' + this.data.book.id,
+    })
+  },
+
   cardClick: function(event){
     var id = event.currentTarget.dataset.id
     var book_id = event.currentTarget.dataset.book_id
