@@ -1,18 +1,73 @@
 // pages/book/info.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "name": null,
+    "id": null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    var book_id = options.book_id
+    if (book_id) {
+      app.wxRequest(
+        "GET",
+        "flash_card/book/" + book_id,
+        {},
+        function (res){
+          that.setData({
+            id: book_id,
+            name: res.data.data.name
+          }) 
+        },
+        function (err){
 
+        }
+      )
+    }
+  },
+
+  submitBookInfo: function(event) {
+    // var book_name = event.currentTarget.dataset.name
+    let {name} = event.detail.value
+    if (! name){
+      wx.showModal({
+        content: "抽记本名字不能为空",
+        mask: true,
+        complete: function() {
+          return false
+        }
+      })
+      return false
+    }
+    var book_id = this.data.id
+    var uri = book_id ? "flash_card/book/" + book_id : "flash_card/book"
+    var that = this
+    app.wxRequest(
+      "POST",
+      uri,
+      {
+        name: name
+      },
+      function(res) {
+        wx.redirectTo({
+          url: '../book/list',
+        })
+      },
+      function(err) {
+        wx.redirectTo({
+          url: '../book/list',
+        })
+      }
+    )
+    
   },
 
   /**

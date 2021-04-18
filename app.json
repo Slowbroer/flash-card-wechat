@@ -11,7 +11,7 @@
 
     "pages/check/check"
   ],
-  "entryPagePath": "pages/index/index",
+  "entryPagePath": "pages/book/list",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
