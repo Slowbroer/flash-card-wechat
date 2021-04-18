@@ -86,8 +86,26 @@ Page({
         "book_id": book_id
       },
       function(res){
-        console.log(res.data.data)
-        if (res.data.data && res.data.data.length !== 0) {
+        if (res.data.data) {
+          console.log(res.data.data)
+          if (res.data.data.length == 0) {
+            wx.showModal({
+              content: "本轮测试完毕，是否需要重新测试一遍",
+              mask: true,
+              complete: function(res) {
+                if (res.confirm) {
+                  wx.redirectTo({
+                    url: '../check/check?book_id=' + that.data.book_id,
+                  })
+                }
+                if (res.cancel) {
+                  wx.redirectTo({
+                    url: '../flash_card/list?book_id=' + that.data.book_id,
+                  })
+                }
+              },
+            })
+          }
           that.setData({
             card_id: res.data.data.id,
             front: res.data.data.front,
@@ -104,25 +122,7 @@ Page({
   nextCardInfo: function(event){
     var that = this
     var book_id = event.currentTarget.dataset.book
-    app.wxRequest(
-      "GET",
-      "flash_card/check",
-      {
-        "book_id": book_id
-      },
-      function(res){
-        if (res.data.data) {
-          that.setData({
-            card_id: res.data.data.id,
-            front: res.data.data.front,
-            back: res.data.data.back,
-          })
-        }
-      },
-      function(err){
-        console.log('get next card info error')
-        return false
-      })
+    this.getCardInfo(book_id)
   },
 
 
