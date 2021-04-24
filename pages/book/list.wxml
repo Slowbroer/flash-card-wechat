@@ -1,16 +1,28 @@
 <!--pages/book/list.wxml-->
-<view class="add-btn" bindtap="addBook">
-  新增
-</view>
+<van-sticky >
+  <van-button plain hairline size="large" icon="plus" type="primary" bindtap="addBook">新增抽记本</van-button>
+</van-sticky>
 <view class="book-list-top">
 
 </view>
-<view class="book">
-  <view class="book-list" wx:for="{{books}}">
-    <view class="book-item" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="bookClick">
-      <view class="book-name">{{item.name}}</view>
-    </view>
+<view>
+  <view wx:for="{{books}}">
+    <van-swipe-cell right-width="{{ 120 }}" left-width="{{ 60 }}">
+      <view slot="left"><van-button square type="info" bindtap="checkBook" data-id="{{item.id}}">测试</van-button></view>
+      <van-cell-group>
+        <van-cell title="{{item.name}}" value="内容" data-id="{{ item.id }}" data-name="{{ item.name }}" bindtap="bookClick" />
+      </van-cell-group>
+      <view slot="right">
+        <van-button class="edit—button" square type="warning" bindtap="editBook" data-id="{{item.id}}">编辑</van-button>
+        <van-button class="delete—button" square type="danger" bindtap="deleteBook" data-id="{{item.id}}">删除</van-button>
+      </view>
+    </van-swipe-cell>
   </view>
 </view>
+
+
+
+
+
 
 

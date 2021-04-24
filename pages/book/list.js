@@ -30,6 +30,54 @@ Page({
     })
   },
 
+  editBook: function(event) {
+    var book_id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: "../book/info?book_id=" + book_id
+    })
+  },
+
+  deleteBook: function (event) {
+    var that = this
+    var book_id = event.currentTarget.dataset.id
+    wx.showModal({
+      content: '删除该抽认本会同时将里面的抽记卡全部删除，确定要删除该抽认本吗',
+      mask: true,
+      success: function(res) {
+        if (res.confirm) {
+          app.wxRequest(
+            "DELETE",
+            "flash_card/book/" + book_id,
+            {},
+            function (res) {
+              app.wxRequest(
+                "GET",
+                'flash_card/book',
+                {},
+                function (res) {
+                  // loading the book list
+                  that.setData({books:res.data.data.items})
+                },
+                function (err) {}
+              )
+            }
+          )
+        } else if (res.cancel) {
+          return false
+        }
+      }
+    })
+
+
+  },
+
+  checkBook: function (event) {
+    var book_id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: "../check/check?book_id=" + book_id
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

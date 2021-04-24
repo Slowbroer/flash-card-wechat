@@ -15,8 +15,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    // URL:"http://127.0.0.1:5000/",
-    URL:"https://www.slowbro.cn/",
+    URL:"http://127.0.0.1:5000/",
+    // URL:"https://www.slowbro.cn/",
     authFailCode: 401,
   },
   wxRequest: function(method, uri, data, callback, errFun, needToken=true) {
@@ -30,6 +30,10 @@ App({
     }
 
     var authFailCode = this.globalData.authFailCode
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     wx.request({
       url: this.globalData.URL + uri,
       method: method,
@@ -64,6 +68,9 @@ App({
         return false
         errFun(err)
       }
+    })
+    wx.hideLoading({
+      success: (res) => {},
     })
   }
 })

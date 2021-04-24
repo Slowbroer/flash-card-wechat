@@ -54,8 +54,12 @@
   align-items: flex-start;
   transform: rotateY(-180deg); 
 }
+.content-front {
+  padding: 20rpx;
+}
 .content-back {
   padding: 20rpx;
+  white-space: pre-line;
 }
 
 

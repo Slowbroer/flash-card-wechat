@@ -1,6 +1,11 @@
 {
   "navigationBarTitleText":"抽记本",
   "usingComponents": {
-    "mp-cell": "weui-miniprogram/cell/cell"
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-sticky": "@vant/weapp/sticky/index"
   }
 }
