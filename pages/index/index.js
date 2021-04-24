@@ -39,6 +39,7 @@ Page({
     })
   },
   onLoad() {
+    var that = this
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -65,7 +66,8 @@ Page({
               // console.log(res.code)
               var auth_data = {
                 code: res.code,
-                password: Date.parse(new Date())
+                // password: Date.parse(new Date()),
+                nickname: that.data.userInfo.nickName
               }
               // 后端请求登陆
               app.wxRequest("POST","flash_card/auth",auth_data,login_success,login_fail,false)
