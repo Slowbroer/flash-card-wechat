@@ -86,7 +86,7 @@ Page({
     }
     else {
       wx.showModal({
-        content: "请填写完整抽记卡",
+        content: "请填写完整抽认卡",
         mask: true,
         complete: function() {
           return false
