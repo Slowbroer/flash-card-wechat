@@ -84,6 +84,15 @@ Page({
         this.addFlashCard(from_data)
       }
     }
+    else {
+      wx.showModal({
+        content: "请填写完整抽记卡",
+        mask: true,
+        complete: function() {
+          return false
+        }
+      })
+    }
   },
 
   addFlashCard: function(data) {

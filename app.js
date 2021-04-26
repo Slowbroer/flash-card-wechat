@@ -15,8 +15,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    // URL:"http://127.0.0.1:5000/",
-    URL:"https://www.slowbro.cn/",
+    URL:"http://127.0.0.1:5000/",
+    // URL:"https://www.slowbro.cn/",
     authFailCode: 401,
   },
   wxRequest: function(method, uri, data, callback, errFun, needToken=true) {
@@ -61,6 +61,13 @@ App({
           console.log("callback the success")
           callback(res)
         }
+        wx.showModal({
+          content: res.data.msg,
+          mask: true,
+          complete: function() {
+            return false
+          }
+        })
         return false
       },
       fail: function(err){
