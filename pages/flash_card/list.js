@@ -47,6 +47,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu();
     var book_id = options.book_id
     // var book_name = options.book_name
     this.setData({

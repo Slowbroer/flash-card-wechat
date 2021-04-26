@@ -39,6 +39,7 @@ Page({
     })
   },
   onLoad() {
+    wx.hideShareMenu();
     var that = this
     if (wx.getUserProfile) {
       this.setData({
