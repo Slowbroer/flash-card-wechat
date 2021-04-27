@@ -53,7 +53,7 @@ Page({
     })
     if (! book_id) {
       wx.showModal({
-        content: '必须先选择抽记本，如果没有请新建抽记本',
+        content: '必须先选择抽认本，如果没有请新建抽认本',
         mask: true,
         complete: function() {
           wx.navigateTo({

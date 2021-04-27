@@ -43,6 +43,35 @@ Page({
     return false
   },
 
+  tapDeleteCard: function(event) {
+    var that = this
+    var id = event.currentTarget.dataset.id
+    wx.showModal({
+      content: '删除后该抽认卡将不能恢复，确定要删除吗？',
+      mask: true,
+      success: function(res) {
+        if (res.confirm) {
+          that.deleteCard(id)
+        }
+      }
+    })
+  },
+
+  deleteCard:function(card_id){
+    var that = this
+    app.wxRequest(
+      "DELETE",
+      "flash_card/card/" + card_id,
+      {},
+      function(res){
+        that.getCards(that.data.book.id)
+      },
+      function(error){
+
+      }
+    )
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -55,7 +84,7 @@ Page({
     })
     if (! book_id) {
       wx.showModal({
-        content: '必须先选择抽记本，如果没有请新建抽记本',
+        content: '必须先选择抽认本，如果没有请新建抽认本',
         mask: true,
         complete: function() {
           wx.navigateTo({
@@ -74,7 +103,14 @@ Page({
         }
       }) 
     })
-    
+    that.getCards(book_id)
+    that.setData({
+      first_show: false
+    })
+  },
+
+  getCards: function(book_id){
+    var that = this
     app.wxRequest(
       "GET",
       "flash_card/card",
@@ -91,11 +127,8 @@ Page({
       function(err){
         console.log('get cards error')
         return false
-      })
-
-      that.setData({
-        first_show: false
-      })
+      }
+    )
   },
 
   /**

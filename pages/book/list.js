@@ -41,7 +41,7 @@ Page({
     var that = this
     var book_id = event.currentTarget.dataset.id
     wx.showModal({
-      content: '删除该抽认本会同时将里面的抽记卡全部删除，确定要删除该抽认本吗',
+      content: '删除该抽认本会同时将里面的抽认卡全部删除，确定要删除该抽认本吗',
       mask: true,
       success: function(res) {
         if (res.confirm) {

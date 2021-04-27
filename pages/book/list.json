@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText":"抽记本",
+  "navigationBarTitleText":"抽认本",
   "usingComponents": {
     "mp-cell": "weui-miniprogram/cell/cell",
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",

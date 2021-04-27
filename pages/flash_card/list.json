@@ -1,4 +1,10 @@
 {
-  "navigationBarTitleText":"抽记本",
-  "usingComponents": {}
+  "navigationBarTitleText":"抽认本",
+  "usingComponents": {
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-sticky": "@vant/weapp/sticky/index"
+  }
 }

@@ -40,7 +40,7 @@ Page({
     let {name} = event.detail.value
     if (! name){
       wx.showModal({
-        content: "抽记本名字不能为空",
+        content: "抽认本名字不能为空",
         mask: true,
         complete: function() {
           return false

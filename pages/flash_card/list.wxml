@@ -1,21 +1,33 @@
 <!--pages/flash_card/list.wxml-->
 <view>
-  <view class="add-btn" bindtap="addFlashCard">
+  
+  <!-- <view class="add-btn" bindtap="addFlashCard">
     新增
   </view>
   <view class="check-btn" bindtap="checkBook">
     测试
-  </view>
+  </view> -->
   <view class="book-title">
     {{book.name}}
   </view>
-  <view class="card">
-    <view class="card-list" wx:for="{{cards}}">
-      <view class="card-item">
-        <view class="card-front" data-id="{{item.id}}" data-name="{{item.name}}" data-book_id="{{book.id}}" bindtap="cardClick">
-          {{item.name}}
+
+  <view class="button-area" style="text-align:center;margin-bottom:20rpx">
+    <van-sticky>
+      <van-button plain hairline size="normal" icon="plus" type="primary" bindtap="addFlashCard" style="margin:40rpx">新增抽认卡</van-button>
+      <van-button plain hairline size="normal" icon="certificate" type="info" bindtap="checkBook" style="margin:40rpx">测试</van-button>
+    </van-sticky>
+  </view>
+
+  <view>
+    <view wx:for="{{cards}}">
+      <van-swipe-cell right-width="{{ 60 }}" left-width="{{ 0 }}">
+        <van-cell-group>
+          <van-cell title="{{item.name}}" value="详情" data-id="{{item.id}}" data-name="{{item.name}}" data-book_id="{{book.id}}" bindtap="cardClick" />
+        </van-cell-group>
+        <view slot="right">
+          <van-button class="delete—button" square type="danger" bindtap="tapDeleteCard" data-id="{{item.id}}">删除</van-button>
         </view>
-      </view>
+      </van-swipe-cell>
     </view>
   </view>
 </view>
