@@ -11,10 +11,12 @@
     {{book.name}}
   </view>
 
-  <view class="button-area" style="text-align:center;margin-bottom:20rpx">
+  <view>
     <van-sticky>
-      <van-button plain hairline size="normal" icon="plus" type="primary" bindtap="addFlashCard" style="margin:40rpx">新增抽认卡</van-button>
-      <van-button plain hairline size="normal" icon="certificate" type="info" bindtap="checkBook" style="margin:40rpx">测试</van-button>
+      <view class="button-area" style="background-color:white;text-align:center;margin-bottom:20rpx;">
+        <van-button plain size="normal" icon="plus" type="primary" bindtap="addFlashCard" style="margin:40rpx">新增抽认卡</van-button>
+        <van-button plain size="normal" icon="certificate" type="info" bindtap="checkBook" style="margin:40rpx">测试</van-button>
+      </view>
     </van-sticky>
   </view>
 

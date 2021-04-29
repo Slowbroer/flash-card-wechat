@@ -7,6 +7,7 @@ Page({
    */
   data: {
     first_show: true,
+    page:0,
     book: null,
     cards: [
       // {
@@ -111,17 +112,19 @@ Page({
 
   getCards: function(book_id){
     var that = this
+    var page = ++that.data.page
     app.wxRequest(
       "GET",
       "flash_card/card",
       {
-        "book_id": book_id
+        "book_id": book_id,
+        "page": page
       },
       function(res){
-        console.log(that)
-        console.log('get cards success')
+        var cards = that.data.cards
         that.setData({
-          cards: res.data.data.items
+          cards: cards.concat(res.data.data.items),
+          page: page
         })
       },
       function(err){
@@ -142,7 +145,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (! this.data.first_show){
+    if (0 && ! this.data.first_show){
       var that = this
       let pages = getCurrentPages(); //页面栈
       let currPage = pages[pages.length - 1]; //当前页面
@@ -185,14 +188,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      cards: [],
+      page: 0,
+      first_show: true,
+    })
+    var book_id = this.data.book.id
+    this.getCards(book_id)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var book_id = this.data.book.id
+    this.getCards(book_id)
   },
 
   /**

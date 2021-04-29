@@ -9,7 +9,8 @@ Page({
   data: {
     books:[
       
-    ]
+    ],
+    page:0
   },
 
   bookClick: function(event) {
@@ -78,22 +79,33 @@ Page({
     })
   },
 
+  getBooks: function(){
+    var that = this
+    var page = ++that.data.page
+    app.wxRequest(
+      "GET",
+      'flash_card/book',
+      {
+        "page": page
+      },
+      function (res) {
+        var books = that.data.books
+        // loading the book list
+        that.setData({
+          books: books.concat(res.data.data.items),
+          page: page
+        })
+      },
+      function (err) {}
+    )
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.hideShareMenu();
-    var that = this
-    app.wxRequest(
-      "GET",
-      'flash_card/book',
-      {},
-      function (res) {
-        // loading the book list
-        that.setData({books:res.data.data.items})
-      },
-      function (err) {}
-    )
+    this.getBooks()
   },
 
   /**
@@ -128,14 +140,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      "books":[],
+      "page":0
+    })
+    this.getBooks()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getBooks()
   },
 
   /**
