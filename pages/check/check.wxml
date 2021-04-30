@@ -20,7 +20,7 @@
     <view class="operation">
       <button class="mini-btn" type="warn" size="mini" bindtap="rotateFn">翻转</button>
       <button class="mini-btn" type="primary" size="mini" data-result="known" bindtap="sendCheckResult">我知道</button>
-      <button class="mini-btn" type="default" size="mini" data-book="{{book_id}}"  bindtap="nextCardInfo">下一个</button>
+      <button class="mini-btn" type="default" size="mini" data-result="unknown"  bindtap="sendCheckResult">下一个</button>
     </view>
   </view>
 

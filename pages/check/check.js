@@ -120,13 +120,6 @@ Page({
       })
   },
 
-  nextCardInfo: function(event){
-    var that = this
-    var book_id = event.currentTarget.dataset.book
-    this.getCardInfo(book_id)
-  },
-
-
   sendCheckResult: function(event){
     var that = this
     var result = event.currentTarget.dataset.result

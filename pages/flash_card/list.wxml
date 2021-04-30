@@ -22,12 +22,12 @@
 
   <view>
     <view wx:for="{{cards}}">
-      <van-swipe-cell right-width="{{ 60 }}" left-width="{{ 0 }}">
+      <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 0 }}">
         <van-cell-group>
           <van-cell title="{{item.name}}" value="详情" data-id="{{item.id}}" data-name="{{item.name}}" data-book_id="{{book.id}}" bindtap="cardClick" />
         </van-cell-group>
-        <view slot="right">
-          <van-button class="delete—button" square type="danger" bindtap="tapDeleteCard" data-id="{{item.id}}">删除</van-button>
+        <view slot="right" bindtap="tapDeleteCard" data-id="{{item.id}}">
+          删除
         </view>
       </van-swipe-cell>
     </view>

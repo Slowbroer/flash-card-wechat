@@ -13,8 +13,8 @@
         <van-cell title="{{item.name}}" value="详情" data-id="{{ item.id }}" data-name="{{ item.name }}" bindtap="bookClick" />
       </van-cell-group>
       <view slot="right">
-        <van-button class="edit—button" square type="warning" bindtap="editBook" data-id="{{item.id}}">编辑</van-button>
-        <van-button class="delete—button" square type="danger" bindtap="deleteBook" data-id="{{item.id}}">删除</van-button>
+        <van-button square type="warning" bindtap="editBook" data-id="{{item.id}}">编辑</van-button>
+        <van-button square type="danger" bindtap="deleteBook" data-id="{{item.id}}">删除</van-button>
       </view>
     </van-swipe-cell>
   </view>
