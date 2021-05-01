@@ -106,12 +106,12 @@ Page({
         wx.showToast({
           title: '提交成功',
           success: function(res) {
-            wx.navigateBack({
-              delta: 1,
-            })
-            // wx.redirectTo({
-            //   url: "../flash_card/list?book_id=" + that.data.book_id
+            // wx.navigateBack({
+            //   delta: 1,
             // })
+            wx.navigateTo({
+              url: "../flash_card/list?book_id=" + that.data.book_id
+            })
           }
         })
       },

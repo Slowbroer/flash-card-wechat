@@ -65,6 +65,11 @@ Page({
       "flash_card/card/" + card_id,
       {},
       function(res){
+        that.setData({
+          cards: [],
+          page: 0,
+          first_show: true,
+        })
         that.getCards(that.data.book.id)
       },
       function(error){
