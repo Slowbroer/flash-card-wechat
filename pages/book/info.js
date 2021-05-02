@@ -58,13 +58,19 @@ Page({
         name: name
       },
       function(res) {
-        wx.redirectTo({
-          url: '../book/list',
+        // wx.redirectTo({
+        //   url: '../book/list',
+        // })
+        wx.navigateBack({
+          delta: 1,
         })
       },
       function(err) {
-        wx.redirectTo({
-          url: '../book/list',
+        // wx.redirectTo({
+        //   url: '../book/list',
+        // })
+        wx.navigateBack({
+          delta: 1,
         })
       }
     )

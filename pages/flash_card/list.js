@@ -110,9 +110,6 @@ Page({
       }) 
     })
     that.getCards(book_id)
-    that.setData({
-      first_show: false
-    })
   },
 
   getCards: function(book_id){
@@ -143,35 +140,21 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      first_show: false
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (0 && ! this.data.first_show){
-      var that = this
-      let pages = getCurrentPages(); //页面栈
-      let currPage = pages[pages.length - 1]; //当前页面
-      let book_id = currPage.options.book_id
-      app.wxRequest(
-        "GET",
-        "flash_card/card",
-        {
-          "book_id": book_id
-        },
-        function(res){
-          console.log(that)
-          console.log('get cards success')
-          that.setData({
-            cards: res.data.data.items
-          })
-        },
-        function(err){
-          console.log('get cards error')
-          return false
-        })
+    if (! this.data.first_show){
+      this.setData({
+        cards:[],
+        page:0
+      })
+      this.getCards(this.data.book.id)
       }
   },
 

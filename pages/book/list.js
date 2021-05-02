@@ -10,7 +10,8 @@ Page({
     books:[
       
     ],
-    page:0
+    page:0,
+    first_show:true
   },
 
   bookClick: function(event) {
@@ -112,14 +113,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      'first_show': false
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (! this.data.first_show){
+      this.setData({
+        books:[],
+        page:0
+      })
+      this.getBooks()
+    }
   },
 
   /**
