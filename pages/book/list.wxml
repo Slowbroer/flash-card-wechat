@@ -10,7 +10,7 @@
     <van-swipe-cell right-width="{{ 120 }}" left-width="{{ 60 }}">
       <view slot="left" bindtap="checkBook" data-id="{{item.id}}">测试</view>
       <van-cell-group>
-        <van-cell title="{{item.name}}" value="详情" data-id="{{ item.id }}" data-name="{{ item.name }}" bindtap="bookClick" />
+        <van-cell center title="{{item.name}}" value="详情" data-id="{{ item.id }}" data-name="{{ item.name }}" bindtap="bookClick" />
       </van-cell-group>
       <view class="edit-btn text-btn" slot="right" bindtap="editBook" data-id="{{item.id}}">
         编辑

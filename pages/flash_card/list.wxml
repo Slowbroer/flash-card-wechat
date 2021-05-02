@@ -24,7 +24,7 @@
     <view wx:for="{{cards}}">
       <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 0 }}">
         <van-cell-group>
-          <van-cell title="{{item.name}}" value="详情" data-id="{{item.id}}" data-name="{{item.name}}" data-book_id="{{book.id}}" bindtap="cardClick" />
+          <van-cell center title="{{item.name}}" value="详情" data-id="{{item.id}}" data-name="{{item.name}}" data-book_id="{{book.id}}" bindtap="cardClick" />
         </van-cell-group>
         <view slot="right" bindtap="tapDeleteCard" data-id="{{item.id}}">
           删除
