@@ -7,11 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books:[
+    books: [
       
     ],
-    page:0,
-    first_show:true
+    page: 0,
+    first_show: true,
+    refresh: false
   },
 
   bookClick: function(event) {
@@ -122,13 +123,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (! this.data.first_show){
+    if (this.data.refresh){
       this.setData({
         books:[],
         page:0
       })
       this.getBooks()
     }
+    this.setData({
+      refresh: false
+    })
   },
 
   /**

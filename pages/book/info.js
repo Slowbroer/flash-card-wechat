@@ -61,6 +61,11 @@ Page({
         // wx.redirectTo({
         //   url: '../book/list',
         // })
+        var currentPage = getCurrentPages();
+        var prevPage = currentPage[currentPage.length - 2]
+        prevPage.setData({
+          refresh:true,
+        })
         wx.navigateBack({
           delta: 1,
         })

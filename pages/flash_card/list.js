@@ -7,6 +7,7 @@ Page({
    */
   data: {
     first_show: true,
+    refresh:false,
     page:0,
     book: null,
     cards: [
@@ -69,6 +70,7 @@ Page({
           cards: [],
           page: 0,
           first_show: true,
+          refresh:true
         })
         that.getCards(that.data.book.id)
       },
@@ -149,13 +151,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (! this.data.first_show){
+    if (this.data.refresh){
       this.setData({
         cards:[],
         page:0
       })
       this.getCards(this.data.book.id)
-      }
+    }
+    this.setData({
+      refresh: false
+    })
   },
 
   /**

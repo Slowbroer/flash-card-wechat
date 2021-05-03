@@ -106,6 +106,11 @@ Page({
         wx.showToast({
           title: '提交成功',
           success: function(res) {
+            var currentPage = getCurrentPages();
+            var prevPage = currentPage[currentPage.length - 2]
+            prevPage.setData({
+              refresh:true,
+            })
             wx.navigateBack({
               delta: 1,
             })
@@ -139,6 +144,11 @@ Page({
         wx.showToast({
           title: '提交成功',
           success: function(res) {
+            var currentPage = getCurrentPages();
+            var prevPage = currentPage[currentPage.length - 2]
+            prevPage.setData({
+              refresh:true,
+            })
             wx.navigateBack({
               delta: 1,
             })
